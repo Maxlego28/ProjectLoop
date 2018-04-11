@@ -10,14 +10,23 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse-main">
             <?php if(!$connecte){?>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a class="actif" href="./#parallax">Accueil</a></li>
-                <li><a class="#" href="./#contenu1">À Propos</a></li>
-                <li><a class="#" href="./#contenu2">Fonctionnalités</a></li>
-                <li><a class="#" href="./#contenu3">Nous Contacter</a></li>
-                <li><a class="#" href="?action=connecter">Se Connecter</a></li>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="#" href="./#parallax">Accueil</a></li>
+                        <li><a class="#" href="./#contenu1">À Propos</a></li>
+                        <li><a class="#" href="./#contenu2">Fonctionnalités</a></li>
+                        <li><a class="#" href="./#contenu3">Nous Contacter</a></li>
+                        <li><a class="#" href="?action=connecter">Se Connecter</a></li>
+                    </ul>
+            <?php 
+                }
+                else{ ?>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="#" href="?action=affProjets">Mes Projets</a></li>
+                        <li><a class="#" href="?action=modifProjet">Mon Profile </a></li>
+                        <li><a class="#" href="?action=deconnecter">Se Déconnecter </a></li>
+                    </ul>
             <?php }?>
-            </ul>
+            
         </div>
     </div>
 </nav>

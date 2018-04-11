@@ -3,51 +3,44 @@
     Auteur : Gabriel Braun-Grenier
     Date : 4/04/2018
 */
-require_once('../modele/classes/Taches.php');
-require_once('../modele/TacheDAO.php');
-$dao = new TacheDAO();
-$currentUser = "gab";
-$currentProjet = 1;
-$action = "att";
-
+if(!$connecte){header('Location: ?action=default');}
 
 if(isset($_REQUEST['action'])){
     
     switch($_REQUEST['action']){
         case 'desa':
             $id = $_REQUEST['id'];
-            $tache = $dao->find($id);
+            $tache = $TacheDao->find($id);
             $tache->setUserAssigned("");
-            $dao->update($tache);
+            $TacheDao->update($tache);
             break;
             
         case 'att':
             $id = $_REQUEST['id'];
-            $tache = $dao->find($id);
+            $tache = $TacheDao->find($id);
             $tache->setUserAssigned($currentUser);
-            $dao->update($tache);
+            $TacheDao->update($tache);
             break;
             
         case 'moveEC':
             $id = $_REQUEST['id'];
-            $tache = $dao->find($id);
+            $tache = $TacheDao->find($id);
             $tache->setStatut(2);
-            $dao->update($tache);
-            //header("Location: ./test.php");
+            $TacheDao->update($tache);
             break;
             
         case 'moveAF':
             $id = $_REQUEST['id'];
-            $tache = $dao->find($id);
+            $tache = $TacheDao->find($id);
             $tache->setStatut(1);
-            $dao->update($tache);
+            $TacheDao->update($tache);
             break;
             
         case 'moveT':
             $id = $_REQUEST['id'];
-            $tache = $dao->find($id);
+            $tache = $TacheDao->find($id);
             $tache->setStatut(3);
-            $dao->update($tache);
+            $TacheDao->update($tache);
             break;
     }
 }
@@ -61,11 +54,14 @@ if(isset($_REQUEST['action'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="style.css" rel="stylesheet" />
+    <link href="./css/style.css" rel="stylesheet" />
     <meta charset="UTF-8">
 </head>
 <body>
-<div class="container">
+<?php 
+    include("./vues/menuPasCo.php");
+?>
+<div class="container" style="padding-top:100px; padding-bottom:200px">
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-10 col-xs-12">
             <h3 style="color:#ff7f7f">
@@ -73,7 +69,7 @@ if(isset($_REQUEST['action'])){
                 <a href='' title='Ajouter une tâche' style="color:#ff7f7f"><span class="glyphicon glyphicon-plus-sign"></span></a>
             </h3>
             <?php
-                $tacheStat1 = $dao->findByStatut(1);
+                $tacheStat1 = $TacheDao->findByStatut(1);
                 foreach($tacheStat1 as $tache) {
                     if($tache->getNumProjet()==$currentProjet){
             ?>
@@ -105,7 +101,7 @@ if(isset($_REQUEST['action'])){
         <div class="col-lg-4 col-md-4 col-sm-10 col-xs-12">
             <b><h3 style="color:#fffa00">En Cours</h3></b>
             <?php
-                $tacheStat2 = $dao->findByStatut(2);
+                $tacheStat2 = $TacheDao->findByStatut(2);
                 foreach($tacheStat2 as $tache) {
                     if($tache->getNumProjet()==$currentProjet){
             ?>
@@ -131,7 +127,7 @@ if(isset($_REQUEST['action'])){
         <div class="col-lg-4 col-md-4 col-sm-10 col-xs-12">
             <h3 style="color:#7fff7f">Terminées</h3>
             <?php
-                $tacheStat3 = $dao->findByStatut(3);
+                $tacheStat3 = $TacheDao->findByStatut(3);
                 foreach($tacheStat3 as $tache) {
                     if($tache->getNumProjet()==$currentProjet){
             ?>
@@ -153,4 +149,7 @@ if(isset($_REQUEST['action'])){
         </div>
     </div>
 </div>
+    <?php 
+    include("./vues/footer.php");
+?>
 </body>

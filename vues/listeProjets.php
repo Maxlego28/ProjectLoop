@@ -14,8 +14,9 @@
 include("./vues/menuPasCo.php");
 ?>
 <br/><br/>
-<h1>Mes Projets :</h1>    
-    
-    
+<div class="container">
+    <h1>Mes Projets :</h1>
+    <a href="?action=affActivites">Projet1</a>
+</div>
 </body>
 </html>

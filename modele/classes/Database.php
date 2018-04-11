@@ -3,7 +3,7 @@
 Auteur : Gabriel Braun - Grenier
 Date : 3/04/2018
 */
-require_once('../modele/config/Config.php');
+require_once('./modele/config/Config.php');
 class Database {
     private static $instance = NULL;
 

@@ -14,33 +14,29 @@
 </head>
 
 <body>
-    <style>
-        img[alt*="www.000webhost.com"] {
-            display: none;
-        }
-    </style>
     <?php 
     include("./vues/menuPasCo.php");
     ?>
     <div id="parallax">
         <div class="landing-text">
-            <h1>Project Loop</h1>
+            <img src="./images/logoPetit.png" id="imgAccueil"/>
             <h3>Le Gestionnaire de Projet Simplifié.</h3>
         </div>
     </div>
     <div class="padding" id="contenu1">
         <div class="container">
             <div class="col-sm-6">
-                <img src="./images/tableau.png" />
+                <img src="./images/ordiMac.png" class="img-responsive" />
             </div>
             <div class="col-sm-6 text-center">
                 <h2>À Propos</h2>
-                <p>Project Loop est parfait pour qui que vous soyez. Que vous êtes au étude ou <br/> 
-                    au sein d'une grandre entreprise, nos outils de gestion de projet vous serons <br/> 
-                    certainement utile ! Deplus, notre plateforme est loin d'être compliquée, <br/>
-                    vous n'avez qu'a vous inscrire et de commencer à créer de nouveaux projets de <br/> 
-                    de rajouter des tâches a completer. N'ayez pas peur, inscrivez-vous et commencer <br/> 
+                <p>Project Loop est parfait pour qui que vous soyez. Que vous êtes aux études ou 
+                    au sein d'une grande entreprise, nos outils de gestion de projet vous seront <br/>
+                    certainement utile ! De plus, notre plateforme est loin d'être compliquée,  <br/>
+                    vous n'avez qu'à vous inscrire et de commencer à créer de nouveaux projets de <br/>
+                    de rajouter des tâches à compléter. N'ayez pas peur, inscrivez-vous et commencer <br/>
                     à mieux gérer vos projets grâce à Project Loop !
+
                 </p>
             </div>
         </div>
@@ -52,17 +48,18 @@
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <h4>Une Gestion de Projet Simplifié</h4>
                     <p>Project Loop vous propose la gestion de projet la plus simple du marché. 
-                        Que se soit un projet de petite ou grande empleur, notre platforme 
-                        vous aidera à vous guider à travers les étapes de celui-ci.</p>
+                        Que se soit un projet de petite ou grande ampleur, notre plateforme vous 
+                        aidera à vous guider à travers les étapes de celui-ci.</p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <img src="./images/tableau.png" class="img-responsive" />
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <h4>Des possibilité infies!</h4>
-                    <p>Notre platforme vous garrentie un contrôle total sur vos projets et sur votre 
-                        compte utilisateurs. En effet, apres avoir créé votre premier projet, vous 
-                        aurez la possibilité de le modifier comme vous le souhaitez.</p>
+                    <p>Notre plateforme vous garantit un contrôle total sur vos projets 
+                        et sur votre compte utilisateurs. En effet, après avoir créé votre 
+                        premier projet, vous aurez la possibilité de le modifier comme vous 
+                        le souhaitez.</p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <img src="./images/laptopCode.png" class="img-responsive" />
@@ -79,8 +76,15 @@
             </div>
             <div class="col-sm-6 text-center">
                 <h2>Nous Contacter</h2>
-                <p>Il est possible de nous rencontrer au collège de Rosemont, 
-                    mais il serait préférenble que vous remplissiez le formulaire ci-dessous : </p>
+                <p>Il est possible de nous rencontrer au collège de Rosemont,
+                    mais il serait préférable que vous remplissiez le 
+                    formulaire ci-dessous : </p>
+                <form method="post" action="contactFormAction.php">
+                    Votre Nom : <input type="text" name="nomContact" placeholder="Linus Torvalds" required> <br/><br/>
+                    Votre Email : <input type="email" name="emailContact" placeholder="abc@xyz.com " required> <br/><br/>
+                    <br><textarea name="questionContact" placeholder="Ecriver votre question ici!" required></textarea><br/><br/>
+                    <input type="submit" name="btnEnvoieContact" value="Envoyer!">
+                </form>
             </div>
         </div>
     </div>

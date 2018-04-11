@@ -126,7 +126,7 @@ footer{
 footer p{
     color: white;
     display: table-cell;
-    vertical-align: center; /*Ne fonctionne pas*/
+    vertical-align: center;
     padding-top: 25px;
 }
 
@@ -150,4 +150,9 @@ footer p{
     footer p{
         padding-top: 15px;
     }
+}
+
+#imgAccueil{
+    border-style:none;
+    max-width: 100%;
 }

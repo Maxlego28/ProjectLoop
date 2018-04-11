@@ -1,6 +1,6 @@
 
 <html>
-
+<?php if($connecte){header('Location: ?action=affProjets');} ?>
 <head>
     <title>Project Loop |Connexion</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">

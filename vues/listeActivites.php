@@ -19,7 +19,7 @@ if(!$connecte){header('Location: ?action=default');}
 <body>
 <div id="menu">
 <?php 
-    //include("./vues/menuPasCo.php");
+    include("./vues/menuPasCo.php");
 ?>
 </div>
 <div class="container" style="padding-top:100px; padding-bottom:300px">

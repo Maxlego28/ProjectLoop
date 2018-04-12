@@ -3,48 +3,7 @@
     Auteur : Gabriel Braun-Grenier
     Date : 4/04/2018
 */
-if(!$connecte){header('Location: ?action=default');}
-/*
-if(isset($_REQUEST['action'])){
-    
-    switch($_REQUEST['action']){
-        case 'desa':
-            $id = $_REQUEST['id'];
-            $tache = $TacheDao->find($id);
-            $tache->setUserAssigned("");
-            $TacheDao->update($tache);
-            break;
-            
-        case 'att':
-            $id = $_REQUEST['id'];
-            $tache = $TacheDao->find($id);
-            $tache->setUserAssigned($currentUser);
-            $TacheDao->update($tache);
-            break;
-            
-        case 'moveEC':
-            $id = $_REQUEST['id'];
-            $tache = $TacheDao->find($id);
-            $tache->setStatut(2);
-            $TacheDao->update($tache);
-            break;
-            
-        case 'moveAF':
-            $id = $_REQUEST['id'];
-            $tache = $TacheDao->find($id);
-            $tache->setStatut(1);
-            $TacheDao->update($tache);
-            break;
-            
-        case 'moveT':
-            $id = $_REQUEST['id'];
-            $tache = $TacheDao->find($id);
-            $tache->setStatut(3);
-            $TacheDao->update($tache);
-            break;
-    }
-}
-  */  
+if(!$connecte){header('Location: ?action=default');} 
 ?>
 
 <head>

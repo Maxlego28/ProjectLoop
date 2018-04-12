@@ -58,10 +58,11 @@ if(isset($_REQUEST['action'])){
     <meta charset="UTF-8">
 </head>
 <body>
+<div id="menu">
 <?php 
-    //include("./vues/menuPasCo.php");
-    echo $currentUser;
+    include("./vues/menuPasCo.php");
 ?>
+</div>
 <div class="container" style="padding-top:100px; padding-bottom:200px">
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-10 col-xs-12">

@@ -5,6 +5,7 @@ require_once('./controleur/ListeProjetsAction.php');
 require_once('./controleur/AffActivitesAction.php');
 require_once('./controleur/DesattribuerAction.php');
 require_once('./controleur/AttribuerAction.php');
+require_once('./controleur/MoveECAction.php');
 
 class ActionBuilder{
 	public static function getAction($nomAction){
@@ -30,6 +31,9 @@ class ActionBuilder{
             break;
             case "desattribuer":
                 return new DesattribuerAction();
+            break;
+            case "moveEC":
+                return new MoveECAction();
             break;
 			default :
 				return new DefaultAction();

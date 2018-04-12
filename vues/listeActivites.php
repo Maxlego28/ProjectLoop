@@ -34,11 +34,12 @@ if(!$connecte){header('Location: ?action=default');}
                 foreach($tacheStat1 as $tache) {
                     if($tache->getNumProjet()==$currentProjet){ //si c'est le bon projet, on ajoute la tâche a la liste
             ?> 
+            <?php if(!isset($_REQUEST['idEdit'])or $tache->getID()!=$_REQUEST['idEdit']){?>
                 <div class="panel panel-info col-lg-10 col-md-10 col-sm-10 col-xs-12" style="border-color:#ff7f7f">
                     <div class="panel-heading" style="background-color:#ff7f7f">
                         <p style="color:#af0000"><?=$tache->getTitre()?>
                             <?php if($tache->getUserAssigned()==$currentUser) { ?> <!--seulement le user assigner peut modifier -->
-                                <a href='' title='Modifier' style="color:#af0000"><span class="glyphicon glyphicon-edit"></span></a></p>
+                                <a href='?action=editTache&idEdit=<?=$tache->getId()?>' title='Modifier' style="color:#af0000"><span class="glyphicon glyphicon-edit"></span></a></p>
                             <?php } ?>
                     </div>
                     <div class="panel-body">
@@ -60,7 +61,27 @@ if(!$connecte){header('Location: ?action=default');}
                 </div>
             <?php
                     }
+                if(isset($_REQUEST['idEdit']) and $tache->getID()==$_REQUEST['idEdit']){ ?>
+                    <form action="?action=confirmEditTache&id=<?=$tache->getId()?>" method="post">
+                        <div class="panel panel-info col-lg-10 col-md-10 col-sm-10 col-xs-12" style="border-color:#ff7f7f">
+                            <div class="panel-heading" style="background-color:#ff7f7f">
+                                <input type="text" value="<?=$tache->getTitre()?>" name="titreEdit" placeholder="titre" required>
+                                    <?php if($tache->getUserAssigned()==$currentUser) { ?> <!--ici le bouton edit est changer pour confirmer les modifs -->
+                                        <button type="submit" class="btn btn-primary" style="background-color:#ff7f7f; border-style:none">
+                                            <i class="glyphicon glyphicon-ok" style="color:#af0000"></i>
+                                        </button>
+                                    <?php } ?>
+                            </div>
+                            <div class="panel-body">
+                                <textarea name="descriptionEdit" placeholder="description" name="descriptionEdit"><?=$tache->getDescription()?></textarea>
+                                <input type="date" name="dateEdit" value="<?=$tache->getDateFin()?>" required>
+                            </div>      
+                        </div>
+                    </form>
+            <?php
+                    }
                 }
+            }
             ?>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-10 col-xs-12">

@@ -8,6 +8,8 @@ require_once('./controleur/AttribuerAction.php');
 require_once('./controleur/MoveECAction.php');
 require_once('./controleur/MoveAFAction.php');
 require_once('./controleur/MoveTAction.php');
+require_once('./controleur/EditTacheAction.php');
+require_once('./controleur/ConfirmEditTache.php');
 
 class ActionBuilder{
 	public static function getAction($nomAction){
@@ -42,6 +44,12 @@ class ActionBuilder{
             break;
             case "moveT":
                 return new MoveTAction();
+            break;
+            case "editTache":
+                return new EditTacheAction();
+            break;
+            case "confirmEditTache":
+                return new ConfirmEditTache();
             break;
 			default :
 				return new DefaultAction();

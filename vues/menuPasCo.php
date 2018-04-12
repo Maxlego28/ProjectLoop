@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="menu" <?php if($connecte){ ?> style="position:absolute"<?php } ?>>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="menu" <?php if($connecte){ ?> style="position:absolute; box-shadow: none;"<?php } ?>>
 
     <div class="container-fluid">
         <div clas="navbar-header">

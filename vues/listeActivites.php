@@ -19,7 +19,7 @@ if(!$connecte){header('Location: ?action=default');}
 <body>
 <div id="menu">
 <?php 
-    include("./vues/menuPasCo.php");
+    //include("./vues/menuPasCo.php");
 ?>
 </div>
 <div class="container" style="padding-top:100px; padding-bottom:300px">
@@ -43,8 +43,12 @@ if(!$connecte){header('Location: ?action=default');}
                     </div>
                     <div class="panel-body">
                         <p><?=$tache->getDescription()?></p>
-                        <p>date de fin : <?=$tache->getDateFin()?></p>
-                        <?php if($tache->getUserAssigned()==$currentUser) { ?> <!--Seulement le user assigner peut deplacer une tâche-->
+                        <?php if($tache->getDateDebut()!=null or $tache->getDateDebut()!=""){?>
+                        <p>Date de debut : <?=$tache->getDateDebut()?></p>
+                        <?php } ?>
+                        <p>Date de fin : <?=$tache->getDateFin()?></p>
+                        <?php  
+                            if($tache->getUserAssigned()==$currentUser) { ?> <!--Seulement le user assigner peut deplacer une tâche-->
                             <a href='?action=desattribuer&id=<?=$tache->getId()?>' title='Se désatribuer' style="color:#ff7f7f"><span class="glyphicon glyphicon-warning-sign"></span></a>
                             <a href='?action=moveEC&id=<?=$tache->getId()?>' title='Déplacer vers "En Cours"' style="color:#ff7f7f"><span class="glyphicon glyphicon-arrow-right"></span></a>
                         <?php } 
@@ -72,8 +76,8 @@ if(!$connecte){header('Location: ?action=default');}
                     </div>
                     <div class="panel-body">
                         <p><?=$tache->getDescription()?></p>
-                        <p>date de début : <?=$tache->getDateDebut()?></p>
-                        <p>date de fin : <?=$tache->getDateFin()?></p>
+                        <p>Date de début : <?=$tache->getDateDebut()?></p>
+                        <p>Date de fin : <?=$tache->getDateFin()?></p>
                         <?php if($tache->getUserAssigned()==$currentUser) { ?>
                             <a href='?action=moveAF&id=<?=$tache->getId()?>' title='Déplacer vers "À Faire"' style="color:#fffc7f"><span class="glyphicon glyphicon-arrow-left"></span></a>
                             <a href='?action=moveT&id=<?=$tache->getId()?>' title='Déplacer vers "En Cours"' style="color:#fffc7f"><span class="glyphicon glyphicon-arrow-right"></span></a>
@@ -98,7 +102,8 @@ if(!$connecte){header('Location: ?action=default');}
                     </div>
                     <div class="panel-body">
                         <p><?=$tache->getDescription()?></p>
-                        <p>date de fin : <?=$tache->getDateFin()?></p>
+                        <p>Date de début : <?=$tache->getDateDebut()?></p>
+                        <p>Date de fin : <?=$tache->getDateFin()?></p>
                         <?php if($tache->getUserAssigned()==$currentUser) { ?> <!--Seulement le user attribuer peut interagir avec ses tâches terminées-->
                         <a href='?action=moveEC&id=<?=$tache->getId()?>' title='Déplacer vers "En Cours"' style="color:#7fff7f"><span class="glyphicon glyphicon-arrow-left"></span></a>
                         <a href='' title='Supprimer la tâche' style="color:#7fff7f"><span class="glyphicon glyphicon-trash"></span></a>

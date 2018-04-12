@@ -3,6 +3,8 @@ require_once('./controleur/DefaultAction.php');
 require_once('./controleur/LoginAction.php');
 require_once('./controleur/ListeProjetsAction.php');
 require_once('./controleur/AffActivitesAction.php');
+require_once('./controleur/DesattribuerAction.php');
+require_once('./controleur/AttribuerAction.php');
 
 class ActionBuilder{
 	public static function getAction($nomAction){
@@ -22,6 +24,12 @@ class ActionBuilder{
             break;
             case "affActivites":
                 return new AffActivitesAction();
+            break;
+            case "attribuer":
+                return new AttribuerAction();
+            break;
+            case "desattribuer":
+                return new DesattribuerAction();
             break;
 			default :
 				return new DefaultAction();

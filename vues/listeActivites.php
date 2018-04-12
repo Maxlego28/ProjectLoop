@@ -4,7 +4,7 @@
     Date : 4/04/2018
 */
 if(!$connecte){header('Location: ?action=default');}
-
+/*
 if(isset($_REQUEST['action'])){
     
     switch($_REQUEST['action']){
@@ -44,7 +44,7 @@ if(isset($_REQUEST['action'])){
             break;
     }
 }
-    
+  */  
 ?>
 
 <head>
@@ -59,7 +59,8 @@ if(isset($_REQUEST['action'])){
 </head>
 <body>
 <?php 
-    include("./vues/menuPasCo.php");
+    //include("./vues/menuPasCo.php");
+    echo $currentUser;
 ?>
 <div class="container" style="padding-top:100px; padding-bottom:200px">
     <div class="row">
@@ -84,12 +85,12 @@ if(isset($_REQUEST['action'])){
                         <p><?=$tache->getDescription()?></p>
                         <p>date de fin : <?=$tache->getDateFin()?></p>
                         <?php if($tache->getUserAssigned()==$currentUser) { ?> 
-                            <a href='?action=desa&id=<?=$tache->getId()?>' title='Se désatribuer' style="color:#ff7f7f"><span class="glyphicon glyphicon-warning-sign"></span></a>
+                            <a href='?action=desattribuer&id=<?=$tache->getId()?>' title='Se désatribuer' style="color:#ff7f7f"><span class="glyphicon glyphicon-warning-sign"></span></a>
                             <a href='?action=moveEC&id=<?=$tache->getId()?>' title='Déplacer vers "En Cours"' style="color:#ff7f7f"><span class="glyphicon glyphicon-arrow-right"></span></a>
                         <?php } 
                             else{
                         ?>
-                            <a href='?action=att&id=<?=$tache->getId()?>' title="S'attribuer la tâche" style="color:#ff7f7f"><span class="glyphicon glyphicon-user"></span></a>
+                            <a href='?action=attribuer&id=<?=$tache->getId()?>&user=<?php echo $currentUser;?>' title="S'attribuer la tâche" style="color:#ff7f7f"><span class="glyphicon glyphicon-user"></span></a>
                         <?php } ?>
                     </div>      
                 </div>

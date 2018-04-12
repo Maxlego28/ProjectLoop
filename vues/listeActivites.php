@@ -63,33 +63,33 @@ if(isset($_REQUEST['action'])){
     include("./vues/menuPasCo.php");
 ?>
 </div>
-<div class="container" style="padding-top:100px; padding-bottom:200px">
+<div class="container" style="padding-top:100px; padding-bottom:300px">
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-10 col-xs-12">
             <h3 style="color:#ff7f7f">
                 À Faire
                 <a href='' title='Ajouter une tâche' style="color:#ff7f7f"><span class="glyphicon glyphicon-plus-sign"></span></a>
             </h3>
-            <?php
-                $tacheStat1 = $TacheDao->findByStatut(1);
+            <?php //Cherche les tâche à faire
+                $tacheStat1 = $TacheDao->findByStatut(1); 
                 foreach($tacheStat1 as $tache) {
-                    if($tache->getNumProjet()==$currentProjet){
-            ?>
+                    if($tache->getNumProjet()==$currentProjet){ //si c'est le bon projet, on ajoute la tâche a la liste
+            ?> 
                 <div class="panel panel-info col-lg-10 col-md-10 col-sm-10 col-xs-12" style="border-color:#ff7f7f">
                     <div class="panel-heading" style="background-color:#ff7f7f">
                         <p style="color:#af0000"><?=$tache->getTitre()?>
-                            <?php if($tache->getUserAssigned()==$currentUser) { ?>
+                            <?php if($tache->getUserAssigned()==$currentUser) { ?> <!--seulement le user assigner peut modifier -->
                                 <a href='' title='Modifier' style="color:#af0000"><span class="glyphicon glyphicon-edit"></span></a></p>
                             <?php } ?>
                     </div>
                     <div class="panel-body">
                         <p><?=$tache->getDescription()?></p>
                         <p>date de fin : <?=$tache->getDateFin()?></p>
-                        <?php if($tache->getUserAssigned()==$currentUser) { ?> 
+                        <?php if($tache->getUserAssigned()==$currentUser) { ?> <!--Seulement le user assigner peut deplacer une tâche-->
                             <a href='?action=desattribuer&id=<?=$tache->getId()?>' title='Se désatribuer' style="color:#ff7f7f"><span class="glyphicon glyphicon-warning-sign"></span></a>
                             <a href='?action=moveEC&id=<?=$tache->getId()?>' title='Déplacer vers "En Cours"' style="color:#ff7f7f"><span class="glyphicon glyphicon-arrow-right"></span></a>
                         <?php } 
-                            else{
+                            else{ //si le user n'est pas attribuer a une tâche, il peut se l'attribuer, peut être changer pour si une tâche n'est pas assigner (est assigné à)
                         ?>
                             <a href='?action=attribuer&id=<?=$tache->getId()?>&user=<?php echo $currentUser;?>' title="S'attribuer la tâche" style="color:#ff7f7f"><span class="glyphicon glyphicon-user"></span></a>
                         <?php } ?>
@@ -102,10 +102,10 @@ if(isset($_REQUEST['action'])){
         </div>
         <div class="col-lg-4 col-md-4 col-sm-10 col-xs-12">
             <b><h3 style="color:#fffa00">En Cours</h3></b>
-            <?php
+            <?php //Cherche les tâche en cours
                 $tacheStat2 = $TacheDao->findByStatut(2);
                 foreach($tacheStat2 as $tache) {
-                    if($tache->getNumProjet()==$currentProjet){
+                    if($tache->getNumProjet()==$currentProjet){ //si c'est le bon projet, on ajoute la tâche a la liste
             ?>
                 <div class="panel panel-info col-lg-10 col-md-10 col-sm-10 col-xs-12" style="border-color:#fffc7f">
                     <div class="panel-heading" style="background-color:#fffc7f">
@@ -128,10 +128,10 @@ if(isset($_REQUEST['action'])){
         </div>
         <div class="col-lg-4 col-md-4 col-sm-10 col-xs-12">
             <h3 style="color:#7fff7f">Terminées</h3>
-            <?php
+            <?php //cherche les tâches terminées
                 $tacheStat3 = $TacheDao->findByStatut(3);
                 foreach($tacheStat3 as $tache) {
-                    if($tache->getNumProjet()==$currentProjet){
+                    if($tache->getNumProjet()==$currentProjet){ //si c'est le bon projet, on ajoute la tâche a la liste
             ?>
                 <div class="panel panel-info col-lg-10 col-md-10 col-sm-10 col-xs-12" style="border-color:#7fff7f">
                     <div class="panel-heading" style="background-color:#7fff7f">
@@ -140,8 +140,10 @@ if(isset($_REQUEST['action'])){
                     <div class="panel-body">
                         <p><?=$tache->getDescription()?></p>
                         <p>date de fin : <?=$tache->getDateFin()?></p>
+                        <?php if($tache->getUserAssigned()==$currentUser) { ?> <!--Seulement le user attribuer peut interagir avec ses tâches terminées-->
                         <a href='?action=moveEC&id=<?=$tache->getId()?>' title='Déplacer vers "En Cours"' style="color:#7fff7f"><span class="glyphicon glyphicon-arrow-left"></span></a>
                         <a href='' title='Supprimer la tâche' style="color:#7fff7f"><span class="glyphicon glyphicon-trash"></span></a>
+                        <?php } ?>
                     </div>
                 </div> 
             <?php

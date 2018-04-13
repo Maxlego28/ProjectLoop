@@ -35,7 +35,7 @@ class  Taches{
         $this->id = $value;
     }
     public function setTitre($value) {
-        $this->nom = $value;
+        $this->titre = $value;
     }
     public function setDateDebut($value) {
         $this->dateDebut = $value;
@@ -46,30 +46,30 @@ class  Taches{
     public function setNumProjet($value){
         $this->titreProjet = $value;
     }
-    public function setAssigne($value){
-        $this->assigne = $value;
-    }
     public function setStatut($value){
         $this->statut = $value;
     }
     public function setUserAssigned($value){
         $this->userAssigned = $value;
     }
+    public function setDescription($value){
+        $this->description = $value;
+    }
     
     public function loadFromArray($t) {
         $this->id = $t['ID'];
-        $this->nom = $t['NOM'];
+        $this->titre = $t['TITRE'];
         $this->dateDebut = $t['DATEDEBUT'];
-        $this->titreProjet = $t['TITREPROJET'];
+        $this->titreProjet = $t['NUMPROJET'];
+        $this->description = $t['DESCRIPTION'];
         $this->dateFin = $t['DATEFIN'];
-        $this->userAssigned = $t['ASSIGNE'];
+        $this->userAssigned = $t['userAssigned'];
         $this->statut = $t['STATUT'];
         
     }
     
     public function loadFromObject($x) {
         $this->id = $x->id;
-        $this->nom = $x->titre;
         $this->dateDebut = $x->dateDebut;
         $this->numProjet = $x->numProjet;
         $this->dateFin = $x->dateFin;

@@ -71,11 +71,13 @@ if(!$connecte){header('Location: ?action=default');}
                                         <button type="submit" class="btn btn-primary" style="background-color:#ff7f7f; border-style:none">
                                             <i class="glyphicon glyphicon-ok" style="color:#af0000"></i>
                                         </button>
+                                        <a href="?action=affActivites" title="Annuler la modification"><span class="glyphicon glyphicon-remove" style="color:#af0000"></span></a>
                                     <?php } ?>
                             </div>
                             <div class="panel-body">
-                                <textarea name="descriptionEdit" placeholder="description" name="descriptionEdit"><?=$tache->getDescription()?></textarea>
-                                <input type="date" name="dateEdit" value="<?=$tache->getDateFin()?>" required>
+                                <textarea name="descriptionEdit" placeholder="description" name="descriptionEdit"><?=$tache->getDescription()?></textarea> <br/>
+                                <input type="date" name="dateEdit" value="<?=$tache->getDateFin()?>" required> <br/>
+                                <a href="?action=del&id=<?=$tache->getId()?>" title="Supprimer la tâche"><span class="glyphicon glyphicon-trash" style="color:#ff7f7f"></span></a>
                             </div>      
                         </div>
                     </form>

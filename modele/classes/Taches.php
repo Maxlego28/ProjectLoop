@@ -58,18 +58,18 @@ class  Taches{
     
     public function loadFromArray($t) {
         $this->id = $t['ID'];
-        $this->nom = $t['NOM'];
+        $this->titre = $t['TITRE'];
         $this->dateDebut = $t['DATEDEBUT'];
-        $this->titreProjet = $t['TITREPROJET'];
+        $this->titreProjet = $t['NUMPROJET'];
+        $this->description = $t['DESCRIPTION'];
         $this->dateFin = $t['DATEFIN'];
-        $this->userAssigned = $t['ASSIGNE'];
+        $this->userAssigned = $t['userAssigned'];
         $this->statut = $t['STATUT'];
         
     }
     
     public function loadFromObject($x) {
         $this->id = $x->id;
-        $this->nom = $x->titre;
         $this->dateDebut = $x->dateDebut;
         $this->numProjet = $x->numProjet;
         $this->dateFin = $x->dateFin;

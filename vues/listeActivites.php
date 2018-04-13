@@ -22,7 +22,7 @@ if(!$connecte){header('Location: ?action=default');}
     include("./vues/menuPasCo.php");
 ?>
 </div>
-<div class="container" style="padding-top:100px; padding-bottom:300px">
+<div class="container" style="padding-top:100px; padding-bottom:462px">
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-10 col-xs-12">
             <h3 style="color:#ff7f7f">
@@ -56,6 +56,7 @@ if(!$connecte){header('Location: ?action=default');}
                             else{ //si le user n'est pas attribuer a une tâche, il peut se l'attribuer, peut être changer pour si une tâche n'est pas assigner (est assigné à)
                         ?>
                             <a href='?action=attribuer&id=<?=$tache->getId()?>&user=<?php echo $currentUser;?>' title="S'attribuer la tâche" style="color:#ff7f7f"><span class="glyphicon glyphicon-user"></span></a>
+                            <?php echo $tache->getUserAssigned()?>
                         <?php } ?>
                     </div>      
                 </div>

@@ -12,6 +12,7 @@ require_once('./controleur/EditTacheAction.php');
 require_once('./controleur/ConfirmEditTache.php');
 require_once('./controleur/AddTacheAction.php');
 require_once('./controleur/ConfirmAddTache.php');
+require_once('./controleur/DeleteTacheAction.php');
 
 
 class ActionBuilder{
@@ -59,6 +60,9 @@ class ActionBuilder{
             break;
             case "confirmAddTache":
                 return new ConfirmAddTache();
+            break;
+            case "deleteTache":
+                return new DeleteTacheAction();
             break;
 			default :
 				return new DefaultAction();

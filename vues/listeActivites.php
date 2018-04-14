@@ -81,7 +81,7 @@ if(!$connecte){header('Location: ?action=default');}
                 </div>
             <?php
                     }
-                if(isset($_REQUEST['idEdit']) and $tache->getID()==$_REQUEST['idEdit']){ ?>
+                if(isset($_REQUEST['idEdit']) and $tache->getID()==$_REQUEST['idEdit']){ ?> <!--Si on a une tache a edit-->
                     <form action="?action=confirmEditTache&id=<?=$tache->getId()?>" method="post">
                         <div class="panel panel-info col-lg-10 col-md-10 col-sm-10 col-xs-12" style="border-color:#ff7f7f">
                             <div class="panel-heading" style="background-color:#ff7f7f">
@@ -94,7 +94,7 @@ if(!$connecte){header('Location: ?action=default');}
                             <div class="panel-body">
                                 <textarea name="descriptionEdit" placeholder="description" name="descriptionEdit"><?=$tache->getDescription()?></textarea> <br/>
                                 <input type="date" name="dateEdit" value="<?=$tache->getDateFin()?>" required> <br/>
-                                <a href="?action=del&id=<?=$tache->getId()?>" title="Supprimer la tâche"><span class="glyphicon glyphicon-trash" style="color:#ff7f7f"></span></a>
+                                <a href="?action=deleteTache&id=<?=$tache->getId()?>" title="Supprimer la tâche"><span class="glyphicon glyphicon-trash" style="color:#ff7f7f"></span></a>
                             </div>      
                         </div>
                     </form>
@@ -147,7 +147,7 @@ if(!$connecte){header('Location: ?action=default');}
                         <p>Date de fin : <?=$tache->getDateFin()?></p>
                         <?php if($tache->getUserAssigned()==$currentUser) { ?> <!--Seulement le user attribuer peut interagir avec ses tâches terminées-->
                         <a href='?action=moveEC&id=<?=$tache->getId()?>' title='Déplacer vers "En Cours"' style="color:#7fff7f"><span class="glyphicon glyphicon-arrow-left"></span></a>
-                        <a href='' title='Supprimer la tâche' style="color:#7fff7f"><span class="glyphicon glyphicon-trash"></span></a>
+                        <a href='?action=deleteTache&id=<?=$tache->getId()?>' title='Supprimer la tâche' style="color:#7fff7f"><span class="glyphicon glyphicon-trash"></span></a>
                         <?php } ?>
                     </div>
                 </div> 

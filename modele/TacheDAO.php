@@ -113,7 +113,7 @@ class TacheDAO {
             $db = Database::getInstance();
             try {
                 $pstmt = $db->prepare("INSERT INTO taches (ID, TITRE, DESCRIPTION, NUMPROJET, USERASSIGNED, STATUT, DATEDEBUT, DATEFIN)".
-                                                  " VALUES (:id,:t,:d, :n, null, :s, null, :df)");
+                                                  " VALUES (:id, :t,:d, :n, null, :s, null, :df)");
                 $pstmt->execute(array(':id' => $tache->getId(),
                                       ':t' => $tache->getTitre(),
                                       ':d' => $tache->getDescription(),

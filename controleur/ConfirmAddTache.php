@@ -9,7 +9,7 @@ class ConfirmAddTache implements Action {
         $date = $_REQUEST['dateAdd'];
         $numProjet = $_REQUEST['numProjetAdd'];
         $tache = new Taches();
-        $tache->setId("2");
+        $tache->setId(null);
         $tache->setNumProjet($numProjet);
         $tache->setTitre($titre);
         $tache->setDescription($description);

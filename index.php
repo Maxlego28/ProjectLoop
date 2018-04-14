@@ -4,7 +4,7 @@ require_once('./modele/TacheDAO.php');
 $TacheDao = new TacheDAO();
 /* changer sa avec les sessions*/
 $currentUser = "gab";
-$currentProjet = 1;
+$currentProjet = "1";
 $action = "att";
 $connecte = true;
 /**/

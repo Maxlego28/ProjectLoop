@@ -10,6 +10,10 @@ require_once('./controleur/MoveAFAction.php');
 require_once('./controleur/MoveTAction.php');
 require_once('./controleur/EditTacheAction.php');
 require_once('./controleur/ConfirmEditTache.php');
+require_once('./controleur/AddTacheAction.php');
+require_once('./controleur/ConfirmAddTache.php');
+require_once('./controleur/DeleteTacheAction.php');
+
 
 class ActionBuilder{
 	public static function getAction($nomAction){
@@ -50,6 +54,15 @@ class ActionBuilder{
             break;
             case "confirmEditTache":
                 return new ConfirmEditTache();
+            break;
+            case "addTache":
+                return new AddTacheAction();
+            break;
+            case "confirmAddTache":
+                return new ConfirmAddTache();
+            break;
+            case "deleteTache":
+                return new DeleteTacheAction();
             break;
 			default :
 				return new DefaultAction();

@@ -44,7 +44,7 @@ class  Taches{
         $this->dateFin = $value;
     }
     public function setNumProjet($value){
-        $this->titreProjet = $value;
+        $this->numProjet = $value;
     }
     public function setStatut($value){
         $this->statut = $value;

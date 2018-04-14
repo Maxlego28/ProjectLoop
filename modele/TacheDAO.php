@@ -97,7 +97,7 @@ class TacheDAO {
                                         ':s' => $tache->getStatut(),
                                         ':u' => $tache->getUserAssigned(),
                                         ':dd' => $tache->getDateDebut(),
-                                        ':df' => $tache->getDateFin(),
+                                        ':df' => $tache->getDateFin()
                                           ));
 
                 $pstmt->closeCursor();
@@ -108,5 +108,26 @@ class TacheDAO {
             }           
 			return $n;			
     }
+    public static function create($tache)
+    {
+            $db = Database::getInstance();
+            try {
+                $pstmt = $db->prepare("INSERT INTO taches (ID, TITRE, DESCRIPTION, NUMPROJET, USERASSIGNED, STATUT, DATEDEBUT, DATEFIN)".
+                                                  " VALUES (:id,:t,:d, :n, null, :s, null, :df)");
+                $pstmt->execute(array(':id' => $tache->getId(),
+                                      ':t' => $tache->getTitre(),
+                                      ':d' => $tache->getDescription(),
+                                      ':n' => $tache->getNumProjet(),
+                                      ':s' => $tache->getStatut(),
+                                      ':df' => $tache->getDateFin()
+                                     ));
+
+                $pstmt->closeCursor();
+                $pstmt = NULL;
+                Database::close();
+            }
+            catch (PDOException $ex){
+            }             
+    }  
 }
 ?>

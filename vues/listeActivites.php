@@ -19,7 +19,7 @@ if(!$connecte){header('Location: ?action=default');}
 <body>
 <div id="menu">
 <?php 
-    include("./vues/menuPasCo.php");
+    //include("./vues/menuPasCo.php");
 ?>
 </div>
 <div class="container" style="padding-top:100px; padding-bottom:462px">
@@ -27,8 +27,27 @@ if(!$connecte){header('Location: ?action=default');}
         <div class="col-lg-4 col-md-4 col-sm-10 col-xs-12">
             <h3 style="color:#ff7f7f">
                 À Faire
-                <a href='' title='Ajouter une tâche' style="color:#ff7f7f"><span class="glyphicon glyphicon-plus-sign"></span></a>
+                <a href='?action=addTache' title='Ajouter une tâche' style="color:#ff7f7f"><span class="glyphicon glyphicon-plus-sign"></span></a>
             </h3>
+            <?php if($_REQUEST['action']=="addTache") {?> <!--Si l'action est d'ajouter une tache-->
+                <form action="?action=confirmAddTache" method="post">
+                        <div class="panel panel-info col-lg-10 col-md-10 col-sm-10 col-xs-12" style="border-color:#ff7f7f">
+                            <div class="panel-heading" style="background-color:#ff7f7f">
+                                <input type="text" name="titreAdd" placeholder="titre" required>
+                                <input type="hidden" name="numProjetAdd" value="<?=$currentProjet ?>"> <!--TEST DEBUG-->
+                                <button type="submit" class="btn btn-primary" style="background-color:#ff7f7f; border-style:none">
+                                    <i class="glyphicon glyphicon-ok" style="color:#af0000"></i>
+                                </button>
+                                <a href="?action=affActivites" title="Annuler l'ajout"><span class="glyphicon glyphicon-remove" style="color:#af0000"></span></a>
+                            </div>
+                            <div class="panel-body">
+                                <textarea name="descriptionAdd" placeholder="description" name="descriptionEdit"></textarea> <br/>
+                                <input type="date" name="dateAdd" required> <br/>
+                            </div>      
+                        </div>
+                    </form>
+            
+            <?php } ?>
             <?php //Cherche les tâche à faire
                 $tacheStat1 = $TacheDao->findByStatut(1); 
                 foreach($tacheStat1 as $tache) {
@@ -67,12 +86,10 @@ if(!$connecte){header('Location: ?action=default');}
                         <div class="panel panel-info col-lg-10 col-md-10 col-sm-10 col-xs-12" style="border-color:#ff7f7f">
                             <div class="panel-heading" style="background-color:#ff7f7f">
                                 <input type="text" value="<?=$tache->getTitre()?>" name="titreEdit" placeholder="titre" required>
-                                    <?php if($tache->getUserAssigned()==$currentUser) { ?> <!--ici le bouton edit est changer pour confirmer les modifs -->
-                                        <button type="submit" class="btn btn-primary" style="background-color:#ff7f7f; border-style:none">
-                                            <i class="glyphicon glyphicon-ok" style="color:#af0000"></i>
-                                        </button>
-                                        <a href="?action=affActivites" title="Annuler la modification"><span class="glyphicon glyphicon-remove" style="color:#af0000"></span></a>
-                                    <?php } ?>
+                                <button type="submit" class="btn btn-primary" style="background-color:#ff7f7f; border-style:none">
+                                    <i class="glyphicon glyphicon-ok" style="color:#af0000"></i>
+                                </button>
+                                <a href="?action=affActivites" title="Annuler la modification"><span class="glyphicon glyphicon-remove" style="color:#af0000"></span></a>
                             </div>
                             <div class="panel-body">
                                 <textarea name="descriptionEdit" placeholder="description" name="descriptionEdit"><?=$tache->getDescription()?></textarea> <br/>

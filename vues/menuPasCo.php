@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="menu" <?php if($connecte){ ?> style="position:absolute; box-shadow: none;"<?php } ?>>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="menu" <?php if($_SESSION["connecte"]==false){ ?> style="position:absolute; box-shadow: none;"<?php } ?>>
 
     <div class="container-fluid">
         <div clas="navbar-header">
@@ -10,7 +10,7 @@
             <a class="navbar-brand" href="./#parallax"><img id="logo" src="./images/logoPetit.png"/></a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse-main">
-            <?php if(!$connecte){?>
+            <?php if($_SESSION["connecte"]==false){?>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a class="#" href="./#parallax">Accueil</a></li>
                         <li><a class="#" href="./#contenu1">À Propos</a></li>

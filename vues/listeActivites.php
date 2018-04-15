@@ -3,7 +3,7 @@
     Auteur : Gabriel Braun-Grenier
     Date : 4/04/2018
 */
-if(!$connecte){header('Location: ?action=default');} 
+if($_SESSION["connecte"]==false){header('Location: ?action=default');} 
 ?>
 
 <head>

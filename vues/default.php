@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php 
-    if(!$connecte){
+    if($_SESSION["connecte"]==false){
     ?>
 <head>
     <title>Project Loop |Accueil</title>

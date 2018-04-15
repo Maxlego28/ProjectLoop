@@ -5,8 +5,11 @@ $TacheDao = new TacheDAO();
 /* changer sa avec les sessions*/
 $currentUser = "gab";
 $currentProjet = "1";
-$action = "att";
-$connecte = true;
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+$_SESSION["connecte"] = true;
+//$connecte = true;
 /**/
 require_once('./controleur/ActionBuilder.php');
 if (ISSET($_REQUEST["action"]))
